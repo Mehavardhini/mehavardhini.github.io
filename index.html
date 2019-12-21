@@ -21,6 +21,8 @@
     <!-- include ar.js for aframe -->
     <script src='https://mnutsch.github.io/arjs_workshop/start/vendor/arjs/build/aframe-ar.js'></script>
     <script>ARjs.Context.baseURL = 'https://mnutsch.github.io/arjs_workshop/start/vendor/three.js/'</script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/cfe5f316/dist/aframe-extras.js"></script>
+
     <!-- Note: the above libraries are included with absolute URL's, because Github.io seems to prefer those. Change them to relative URL's -->
 
     <script>
@@ -60,7 +62,7 @@
     <a-scene debug embedded arjs='trackingMethod: best; debugUIEnabled: false;'>
 
       <!-- Declare assets for use in the scene. -->
-      <a-assets timeout="1000">
+      <!-- <a-assets timeout="1000"> -->
         <!-- Declare assets here. These are things like images or 3D models. -->
 
         <!-- Example of how to declare a 3D model asset. -->
@@ -68,10 +70,23 @@
         <!-- Example of how to declare a skin for a 3D model asset. -->
         <!--<a-asset-item id="3DModel-mtl" src="3DModel.mtl"></a-asset-item>-->
 
+      <!-- </a-assets> -->
+
+      <a-assets>
+        <a-asset id="cesium-man" src="./CesiumMan.glb"></a-asset>
       </a-assets>
 
       <!-- Create a anchor to attach your augmented reality -->
       <a-anchor hit-testing-enabled='true'>
+
+         <!-- <a-box width="0.25" height="0.25" depth="0.25" position="-0.25 0.125 -0.75" rotation="0 45 0" color="#4CC3D9"></a-box>
+          <a-sphere position="0 0.3125 -1.25" radius="0.3125" color="#EF2D5E"></a-sphere>
+        <a-cylinder position="0.25 0.1875 -0.75" radius="0.125" height="0.375" color="#FFC65D"></a-cylinder>
+        <a-plane position="0 0 -1" rotation="-90 0 0" width="1" height="1" color="#7BC8A4" shadow></a-plane> -->
+
+        <a-entity id="walker" gltf-model="#cesium-man" position="0 0 0" scale="2 2 2" 
+                  animation-mixer>
+        </a-entity>
 
         <!-- Add your augmented reality items here -->
 
@@ -96,7 +111,7 @@
 
         <!-- Basic Box -->
         <!-- see: https://aframe.io/docs/0.8.0 -->
-        <a-box id="myBox" rotation="0 0 0" position='0 0.5 0' depth="1" height="1" width="1" material='opacity: 0.5; side:double; color:blue;'></a-box>
+        <!-- <a-box id="myBox" rotation="0 0 0" position='0 0.5 0' depth="1" height="1" width="1" material='opacity: 0.5; side:double; color:blue;'></a-box> -->
 
         <!-- Basic Sphere -->
         <!-- see: https://aframe.io/docs/0.8.0/primitives/a-sphere.html -->
@@ -116,9 +131,9 @@
     </a-scene>
 
     <!-- add some info at the bottom left of the page -->
-    <div >
+    <!-- <div >
       <span id="myText" style='z-index: 1; color: white; position: fixed; left: 50px; bottom: 10px;'>Add some text here.</span>
-    </div>
+    </div> -->
 
   </body>
 
